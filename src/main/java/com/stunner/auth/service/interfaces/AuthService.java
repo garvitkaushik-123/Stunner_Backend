@@ -2,9 +2,11 @@ package com.stunner.auth.service.interfaces;
 
 import com.stunner.auth.dto.LoginOtpRequestDto;
 import com.stunner.auth.dto.SignupOtpRequestDto;
+import com.stunner.auth.dto.VerifyOTPDto;
 import org.springframework.http.ResponseEntity;
 
 public interface AuthService {
     ResponseEntity<String> requestSignupOtp(SignupOtpRequestDto dto);
     ResponseEntity<String> requestLoginOtp(LoginOtpRequestDto dto);
+    ResponseEntity<String> verifyOTP(VerifyOTPDto dto);
 }

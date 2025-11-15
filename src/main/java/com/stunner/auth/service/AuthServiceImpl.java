@@ -2,6 +2,7 @@ package com.stunner.auth.service;
 
 import com.stunner.auth.dto.LoginOtpRequestDto;
 import com.stunner.auth.dto.SignupOtpRequestDto;
+import com.stunner.auth.dto.VerifyOTPDto;
 import com.stunner.auth.entity.User;
 import com.stunner.auth.repository.UserRepository;
 import com.stunner.auth.service.interfaces.AuthService;
@@ -20,6 +21,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     OtpService otpService;
+
+    @Autowired
+    JwtService jwtService;
 
     @Override
     public ResponseEntity<String> requestSignupOtp(@RequestBody SignupOtpRequestDto dto) {
@@ -62,5 +66,19 @@ public class AuthServiceImpl implements AuthService {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("Login OTP initiated.");
+    }
+
+    @Override
+    public ResponseEntity<String> verifyOTP(VerifyOTPDto dto) {
+//       if (!Twilio.verifyOTP(dto.getOtp(), dto.getPhoneNumber())) {
+//            return ResponseEntity
+//                    .status(HttpStatus.NOT_FOUND)
+//                    .body("Wrong OTP.");
+//      }
+
+        // Now provide jwt authentication to the app client and return staus code 200
+        String jwtToken = jwtService.generateToken(dto.getPhoneNumber());
+
+        return ResponseEntity.ok(jwtToken);
     }
 }

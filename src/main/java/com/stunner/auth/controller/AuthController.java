@@ -2,6 +2,7 @@ package com.stunner.auth.controller;
 
 import com.stunner.auth.dto.LoginOtpRequestDto;
 import com.stunner.auth.dto.SignupOtpRequestDto;
+import com.stunner.auth.dto.VerifyOTPDto;
 import com.stunner.auth.service.interfaces.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,5 +21,10 @@ public class AuthController {
     @PostMapping("/login/request-otp")
     public ResponseEntity<String> requestLoginOtp(@RequestBody LoginOtpRequestDto dto) {
         return authService.requestLoginOtp(dto);
+    }
+
+    @PostMapping("/verifyOTP")
+    public ResponseEntity<String> verifyOTP(@RequestBody VerifyOTPDto dto) {
+        return authService.verifyOTP(dto);
     }
 }
