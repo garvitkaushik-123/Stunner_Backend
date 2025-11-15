@@ -1,10 +1,15 @@
 package com.stunner.auth.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users") // best practice to use plural
+@Table(name = "users")
+@Getter
+@Setter
 public class User {
 
     @Id

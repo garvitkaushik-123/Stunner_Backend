@@ -2,9 +2,10 @@ package com.stunner.auth.controller;
 
 import com.stunner.auth.dto.LoginOtpRequestDto;
 import com.stunner.auth.dto.SignupOtpRequestDto;
-import com.stunner.auth.service.AuthService;
-import lombok.RequiredArgsConstructor;
+import com.stunner.auth.dto.VerifyOTPDto;
+import com.stunner.auth.service.interfaces.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,12 +14,17 @@ public class AuthController {
     @Autowired
     AuthService authService;
     @PostMapping("/signup/request-otp")
-    public String requestSignupOtp(@RequestBody SignupOtpRequestDto dto) {
+    public ResponseEntity<String> requestSignupOtp(@RequestBody SignupOtpRequestDto dto) {
         return authService.requestSignupOtp(dto);
     }
 
     @PostMapping("/login/request-otp")
-    public String requestLoginOtp(@RequestBody LoginOtpRequestDto dto) {
+    public ResponseEntity<String> requestLoginOtp(@RequestBody LoginOtpRequestDto dto) {
         return authService.requestLoginOtp(dto);
+    }
+
+    @PostMapping("/verifyOTP")
+    public ResponseEntity<String> verifyOTP(@RequestBody VerifyOTPDto dto) {
+        return authService.verifyOTP(dto);
     }
 }
