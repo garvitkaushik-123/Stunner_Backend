@@ -18,7 +18,7 @@ public class AuthController {
     }
 
     @PostMapping("/login/request-otp")
-    public String requestLoginOtp(@RequestBody LoginOtpRequestDto dto) {
+    public ResponseEntity<String> requestLoginOtp(@RequestBody LoginOtpRequestDto dto) {
         return authService.requestLoginOtp(dto);
     }
 }

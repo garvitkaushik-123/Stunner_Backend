@@ -61,6 +61,6 @@ public class AuthServiceImpl implements AuthService {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body("Login OTP initiated (dummy).");
+                .body("Login OTP initiated.");
     }
 }
