@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     @Autowired
     AuthService authService;
+
     @PostMapping("/signup/request-otp")
     public String requestSignupOtp(@RequestBody SignupOtpRequestDto dto) {
         return authService.requestSignupOtp(dto);
